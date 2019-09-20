@@ -29,6 +29,7 @@ public class LapService {
 		Session toUpdate = ss.findById(sessionId);
 		toUpdate.addLap(new Lap(time, position));
 		ss.update(toUpdate);
+		//Should be no need to explicitly save the lap
 		//return this.repo.save(new Lap(time, position));
 	}
 	
