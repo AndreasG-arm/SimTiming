@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Lap {
@@ -21,19 +20,21 @@ public class Lap {
 	@Column (nullable = false)
 	private int position;
 	
-	@OneToMany(mappedBy = "id")
-	private int raceId;
+	@ManyToOne
+	private Session session;
 	
 	public Lap() {
 		super();
 	}
 	
-	public Lap(int i, LocalTime t, int p, int ri) {
+	public Lap(LocalTime t, int p, int ri) {
 		super();
-		this.id = i;
 		this.time = t;
 		this.position = p;
-		this.raceId = ri;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Lap [id=" + id + ", time=" + time + ", position=" + position + "]";
+	}
 }

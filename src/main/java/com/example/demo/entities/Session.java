@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,6 @@ import javax.persistence.OneToMany;
 public class Session {
 	@Id
 	@GeneratedValue 
-	@OneToMany (mappedBy = "Lap")
 	private int id;
 	
 	@Column (nullable = false)
@@ -18,6 +19,9 @@ public class Session {
 	
 	private int startPos;
 	private int finishPos;
+	
+	@OneToMany (mappedBy = "Lap")
+	private Set<Lap> laps;
 	
 	public Session(char t, int sp, int fp) {
 		super();
@@ -28,5 +32,14 @@ public class Session {
 	
 	public Session() {
 		super();
+	}
+	
+	public void addLap(Lap lap) {
+		laps.add(lap);
+	}
+
+	@Override
+	public String toString() {
+		return "Session [id=" + id + ", type=" + type + ", startPos=" + startPos + ", finishPos=" + finishPos + "]";
 	}
 }
