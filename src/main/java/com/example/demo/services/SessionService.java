@@ -23,4 +23,12 @@ public class SessionService {
 	public List<Session> findAll(){
 		return this.repo.findAll();
 	}
+	
+	public Session findById(int sessionId) {
+		return this.repo.findById(sessionId).get();
+	}
+	
+	public void update(Session s) {
+		this.repo.save(s);
+	}
 }

@@ -27,7 +27,7 @@ public class Lap {
 		super();
 	}
 	
-	public Lap(LocalTime t, int p, int ri) {
+	public Lap(LocalTime t, int p) {
 		super();
 		this.time = t;
 		this.position = p;
